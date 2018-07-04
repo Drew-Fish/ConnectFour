@@ -11,7 +11,8 @@ let board = [
 function makeTable() {
 
     //Creating the table
-    let newTable = document.createElement('table');
+    var newTable = document.createElement('table');
+    newTable.id = "table";
 
     //Iterating through each row in board and creating a tr for it whilst iterating through each item in the row and creating a td for it.
     for (let row in board) {
@@ -129,6 +130,8 @@ handleClick = function (event) {
         ]
         redTurn = true;
         winningPlayer = "";
+        let table = document.getElementById("table");
+        document.body.removeChild(table);
         makeTable(board);
     }else if (checkTie()){
         alert("This is a tie. Congratulations on both being losers.");
@@ -142,6 +145,8 @@ handleClick = function (event) {
         ]
         redTurn = true;
         winningPlayer = "";
+        document.removeChild(newTable);
+        makeTable(board);
     }else{
         redTurn = !redTurn;
         }
