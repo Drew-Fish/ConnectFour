@@ -92,16 +92,19 @@ function getWinningPlayer(){
         return "Black";
     }
 }
+
 handleClick = function (event) {
 
     //Getting the id and DOM element for the cell which triggered the event listener
     let cellClickedId = event.target.id.split(",");
     let cellClickedElement = document.getElementById(cellClickedId);
+    console.log(cellClickedElement);
+    let cellRow = Number(cellClickedId[0]);
+    let cellColumn = Number(cellClickedId[1]);
+    // console.log(cellClickedId);
 
     //Checking the selected space to ensure it is valid
     // The space is valid if the space is empty and if the space is on the bottom row of the table or if the space directly below it is not empty.
-    let cellRow = Number(cellClickedId[0]);
-    let cellColumn = Number(cellClickedId[1]);
     if (board[cellRow][cellColumn] != 0 || cellRow <= 4 && (board[(cellRow + 1)][cellColumn]) == 0) {
         alert("Select a valid space!");
         return;
